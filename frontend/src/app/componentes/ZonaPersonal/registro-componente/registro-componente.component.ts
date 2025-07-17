@@ -3,7 +3,6 @@ import { Router, RouterModule } from '@angular/router';
 import { RestClienteService } from '../../../servicios/rest-cliente.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { sha256 } from 'js-sha256';
 import { CommonModule } from '@angular/common';
 
 
@@ -52,13 +51,13 @@ export class RegistroComponenteComponent {
       return;
     }
 
-    const contraseHash = sha256(this.contrase);
+    
 
     const datosRegistro = {
       nombre: this.nombre,
       apellido: this.apellido,
       email: this.email,
-      contraseña: contraseHash
+      contraseña: this.contrase
     };
 
     this.restClienteService.RegistroCliente(datosRegistro).subscribe(

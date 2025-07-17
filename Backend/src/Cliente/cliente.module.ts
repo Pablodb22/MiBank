@@ -10,4 +10,6 @@ import {Usuario} from './entidad/cliente.entity'
   controllers: [ClienteController],
   providers: [ClienteService],
 })
-export class ClienteModule {}
+export class ClienteModule {
+  
+}

@@ -14,7 +14,9 @@
           placeholder="Email"
           class="form-control rounded-4 border-0"
           style="background-color: #f0f2f4; color: #111418; height: 56px;"
+          [(ngModel)]="email"
         />
+         <div *ngIf="errores.email" class="text-danger small pt-1">{{ errores.email }}</div>
       </div>
     </div>
 
@@ -27,7 +29,9 @@
           placeholder="*********"
           class="form-control rounded-4 border-0"
           style="background-color: #f0f2f4; color: #111418; height: 56px;"
+          [(ngModel)]="contrase"
         />
+         <div *ngIf="errores.email" class="text-danger small pt-1">{{ errores.contrase }}</div>
       </div>
     </div>
 
@@ -37,6 +41,7 @@
         type="button"
         class="btn w-100 text-white fw-bold"
         style="background-color: #1978e5; border-radius: 9999px;"       
+        (click)="login()"
       >
         Sign up
       </button>

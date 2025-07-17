@@ -15,4 +15,9 @@ export class RestClienteService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
   }
+
+  LoginCliente(datos:any): Observable<any> {
+    console.log(datos) //--> si llega el objeto con los datos del formulario
+    return this.http.post('http://localhost:3000/Cliente/Login', datos);
+  }
 }
