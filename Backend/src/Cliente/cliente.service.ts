@@ -46,6 +46,16 @@ async obtenerUsuario(LoginUserDto: LoginUserDto): Promise<Usuario | null> {
   return usuario;
 }
 
+public async añadirIban(usuarioId: number, iban: string): Promise<void> {
+  
+ const usuario = await this.usuariosRepository.findOne({ where: { id: usuarioId } });
+  if (!usuario) {
+    throw new Error('Usuario no encontrado');
+  }
+  
+  usuario.iban = iban; 
+  await this.usuariosRepository.save(usuario);
+  }
 
   
 }

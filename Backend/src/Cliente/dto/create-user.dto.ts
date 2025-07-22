@@ -17,4 +17,6 @@ export default class CreateUserDto {
     @IsString()
     @IsNotEmpty()
     contraseña: string;
+
+   
 }

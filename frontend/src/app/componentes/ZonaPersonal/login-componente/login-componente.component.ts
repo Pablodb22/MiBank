@@ -1,8 +1,7 @@
-
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { RestClienteService } from '../../../servicios/rest-cliente.service';
 
 
@@ -17,8 +16,9 @@ export class LoginComponenteComponent {
   email: string = '';
   contrase: string = '';
   errores: any = {};
+  localStorage: any;
 
-  constructor(private restClienteService: RestClienteService) {}
+  constructor(private restClienteService: RestClienteService, private router: Router) {}
 
   validarCampos():boolean{
 
@@ -36,32 +36,32 @@ export class LoginComponenteComponent {
   }
 
   login() {
-  if (!this.validarCampos()) {
-    return;
-  }
-
-  const datosLogin = {
-    email: this.email,
-    contraseña: this.contrase
-  };
-
-  this.restClienteService.LoginCliente(datosLogin).subscribe({
-    next: (response) => {
-      if (response) {
-    
-        console.log('Login exitoso', response);
-        window.location.href = "/";
-      } else {       
-        this.errores.general = "Email o contraseña incorrectos";
-        console.log('Login fallido');
-      }
-    },
-    error: (error) => {
-      console.error('Error en el login', error);
-      this.errores.general = "Error al conectar con el servidor";
+    if (!this.validarCampos()) {
+      return;
     }
-  });
-}
+
+    const datosLogin = {
+      email: this.email,
+      contraseña: this.contrase
+    };
+
+    this.restClienteService.LoginCliente(datosLogin).subscribe({
+      next: (response) => {
+        if (response) {
+          console.log('Login exitoso', response);
+          window.localStorage.setItem('usuario', JSON.stringify(response));
+          this.router.navigate(['/']); // Redirige usando Angular Router
+        } else {
+          this.errores.general = "Email o contraseña incorrectos";
+          console.log('Login fallido');
+        }
+      },
+      error: (error) => {
+        console.error('Error en el login', error);
+        this.errores.general = "Error al conectar con el servidor";
+      }
+    });
+  }
 
 
 

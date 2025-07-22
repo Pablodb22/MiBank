@@ -16,4 +16,7 @@ export class Usuario{
 
     @Column()
     contraseña: string;
+
+    @Column({nullable: true})
+    iban: string;
 }

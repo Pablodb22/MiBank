@@ -19,4 +19,10 @@ export class ClienteController {
 
   }
 
+  @Post('/AnadirIban')
+  añadirIban(@Body() body: any) {
+    
+    return this.appService.añadirIban(body.usuarioId, body.iban);   
+  }
+
 }

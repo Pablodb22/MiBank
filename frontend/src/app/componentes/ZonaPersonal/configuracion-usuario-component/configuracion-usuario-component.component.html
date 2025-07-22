@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center py-5 px-4">
+  <div class="w-100 bg-white rounded-4 shadow-sm p-4" style="max-width: 512px;">
+    <!-- Título -->
+    <h2 class="text-dark text-center fw-bold fs-3 pb-3 pt-2">
+      Configuración de Usuario
+    </h2>
+
+    <!-- Imagen de usuario -->
+    <div class="d-flex justify-content-center mb-4">
+      <div
+        class="rounded-circle border"
+        [ngStyle]="{
+          'width': '80px',
+          'height': '80px',
+          'background-image': 'url(' + ( 'https://lh3.googleusercontent.com/aida-public/AB6AXuDvPjQWpMfAHlI5TxKyigq4LfAdsORIJXHegUf04S9WuYbgArsQ3_n6mW9xg2cfpWBssW1_nmyLJrrbXWtkgygnSHEI8Z2eEWrkY5tmbyJnuaDAgVfkP0uVxGn0oCQTQ8lE29sLTdUlJJkYuszwIbJPU2ZN3EsnBZYn7tEkZAeltw5YOu8MvvCG0gkLi38-9fOuL5KLoziR2nKqn7w3BzYuMuoL7O_kWlrTfuQ1uYrNZLFuntt4BkiX7DGCnnrSQmNhb4XQqvouCdw') + ')',
+          'background-size': 'cover',
+          'background-position': 'center',
+          'background-repeat': 'no-repeat'
+        }"
+      ></div>
+    </div>
+
+    <!-- Nombre -->
+    <div class="mb-3">
+      <label class="form-label text-dark fw-medium pb-1">Nombre</label>
+      <input [(ngModel)]="usuario.nombre" class="form-control rounded-4 border-0" style="background-color: #f0f2f4; color: #111418; height: 48px;" disabled>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label text-dark fw-medium pb-1">Email</label>
+      <input [(ngModel)]="usuario.email" class="form-control rounded-4 border-0" style="background-color: #f0f2f4; color: #111418; height: 48px;" disabled>
+    </div>
+
+    <!-- IBAN -->
+    <div class="mb-3">
+      <label class="form-label text-dark fw-medium pb-1">Nuevo IBAN</label>
+      <input [(ngModel)]="iban" class="form-control rounded-4 border-0" style="background-color: #f0f2f4; color: #111418; height: 48px;">
+    </div>
+    
+    <!-- Botón actualizar -->
+    <div class="d-flex py-2">
+      <button class="btn w-100 text-white fw-bold" style="background-color: #1978e5; border-radius: 9999px;" (click)="actualizarDatos()">Actualizar</button>
+    </div>
+
+    <!-- Mensaje de éxito -->
+    <div *ngIf="mensaje" class="alert alert-success mt-2 text-center">{{ mensaje }}</div>
+  </div>
+</div>

@@ -20,4 +20,10 @@ export class RestClienteService {
     console.log(datos) //--> si llega el objeto con los datos del formulario
     return this.http.post('http://localhost:3000/Cliente/Login', datos);
   }
+
+  AñadirIban(datos: any): Observable<any> {
+   
+    return this.http.post('http://localhost:3000/Cliente/AnadirIban',datos);
+  }
+
 }
