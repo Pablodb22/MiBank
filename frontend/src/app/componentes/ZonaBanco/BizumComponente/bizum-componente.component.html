@@ -41,7 +41,7 @@
         <div class="col-md-4">
           <div class="card shadow-sm border-0 h-100 d-flex flex-column justify-content-center align-items-center">
             <div class="card-body text-center">
-              <button class="btn btn-lg btn-success px-4 py-2" type="button">
+              <button class="btn btn-lg btn-success px-4 py-2" type="button" (click)="mostrarPopupBizum()">
                 <i class="bi bi-send me-2"></i>Enviar Bizum
               </button>
               <p class="small text-muted mt-2 mb-0">Envía dinero al instante</p>
@@ -52,4 +52,10 @@
     </div>
   </div>
   <app-footer></app-footer>
+
+  <app-popup-bizum 
+  *ngIf="mostrarPopup" 
+  (cerrar)="cerrarPopup()" >
+  </app-popup-bizum>
+
 </div>

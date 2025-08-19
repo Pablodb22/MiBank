@@ -1,0 +1,61 @@
+<div 
+  class="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+  style="background: rgba(0,0,0,0.5); z-index: 1050;"
+>
+  <div class="bg-white rounded shadow p-4" style="max-width: 480px; width: 100%;">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0">Enviar Bizum</h5>
+      <button type="button" class="btn-close" aria-label="Cerrar" (click)="cerrarPopup()"></button>
+    </div>
+
+    <!-- Form -->
+    <form>
+      <div class="mb-3">
+        <label for="persona" class="form-label">Persona</label>
+        <input
+          type="text"
+          class="form-control"
+          id="persona"
+          name="persona"          
+          placeholder="Ej: ana@gmail.com"
+          required
+        >
+      </div>
+
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <input
+          type="text"
+          class="form-control"
+          id="descripcion"
+          name="descripcion"          
+          placeholder="Concepto (opcional)"
+        >
+      </div>
+
+      <div class="mb-3">
+        <label for="importe" class="form-label">Importe</label>
+        <div class="input-group">
+          <span class="input-group-text">€</span>
+          <input
+            type="number"
+            class="form-control"
+            id="importe"
+            name="importe"
+            placeholder="Ej: 25.00"
+            step="0.01"
+            min="0.01"
+            required
+          >
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="d-flex justify-content-end gap-2 mt-3">
+        <button type="button" class="btn btn-secondary" (click)="cerrarPopup()">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -9,11 +9,11 @@
           <p class="text-muted mb-0">Controla y analiza tus gastos</p>
         </div>
         <div class="d-flex gap-2">          
-          <button class="btn btn-danger btn-sm">
+          <button class="btn btn-danger btn-sm" (click)="abrirPopup('gasto')">
             <i class="bi bi-funnel me-2"></i>
             Añadir Gasto
           </button>
-          <button class="btn btn-success btn-sm">
+          <button class="btn btn-success btn-sm" (click)="abrirPopup('ingreso')">
             <i class="bi bi-plus me-2"></i>
             Añadir Ingreso
           </button>
@@ -90,4 +90,11 @@
     </div>
   </div>
   <app-footer class="mt-auto"></app-footer>
+
+  <!-- Popup -->
+  <app-popup-cuenta
+    *ngIf="mostrarPopup"
+    [tipo]="tipoMovimiento"
+    (cerrar)="cerrarPopup()">
+  </app-popup-cuenta>
 </div>
