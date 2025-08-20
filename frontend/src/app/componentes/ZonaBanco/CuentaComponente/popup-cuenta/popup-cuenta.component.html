@@ -23,22 +23,22 @@
     <form>
       <div class="mb-3">
         <label for="fecha" class="form-label">Fecha</label>
-        <input type="date" class="form-control" id="fecha" required>
+        <input type="date" class="form-control" id="fecha" name="fecha" [(ngModel)]="transac.fecha" required>
       </div>
       <div class="mb-3">
         <label for="descripcion" class="form-label">Descripción</label>
-        <input type="text" class="form-control" id="descripcion" placeholder="Ej: Compra supermercado" required>
+        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ej: Compra supermercado" [(ngModel)]="transac.descripcion" required>
       </div>
       <div class="mb-3">
         <label for="importe" class="form-label">Importe</label>
-        <input type="number" class="form-control" id="importe" placeholder="Ej: 50.00" required>
+        <input type="number" class="form-control" id="importe" name="cantidad" placeholder="Ej: 50.00" [(ngModel)]="transac.cantidad" required>
       </div>
     </form>
 
     <!-- Footer -->
     <div class="d-flex justify-content-end gap-2 mt-3">
       <button type="button" class="btn btn-secondary" (click)="cerrarPopup()">Cancelar</button>
-      <button type="button" class="btn btn-primary">Guardar</button>
+      <button type="button" class="btn btn-primary" (click)="anadirTransaccion()">Guardar</button>
     </div>
   </div>
 </div>

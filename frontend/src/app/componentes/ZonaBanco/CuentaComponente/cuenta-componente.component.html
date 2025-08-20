@@ -26,26 +26,15 @@
           <div class="card h-100">
             <div class="card-body">
               <p class="text-muted small mb-1">Total Gastado</p>
-              <h5 class="card-title">€1,849.63</h5>
-              <p class="text-muted small">De €2,200.00 presupuestado</p>
+              <h5 class="card-title">{{ totalGastos }}€</h5>              
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <p class="text-muted small mb-1">Promedio Diario</p>
-              <h5 class="card-title">€59.67</h5>
-              <p class="text-success small">-€12.30 vs mes anterior</p>
-            </div>
-          </div>
-        </div>
+        </div>        
         <div class="col-md-4">
           <div class="card h-100">
             <div class="card-body">
               <p class="text-muted small mb-1">Presupuesto Restante</p>
-              <h5 class="card-title">€350.37</h5>
-              <p class="text-muted small">16% del presupuesto mensual</p>
+              <h5 class="card-title">{{presupuestoRestante}}€</h5>              
             </div>
           </div>
         </div>
@@ -66,23 +55,13 @@
                   <th scope="col">Cantidad</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>2025-07-25</td>
-                  <td>Compra en supermercado</td>
-                  <td class="text-danger">-€45.32</td>
-                </tr>
-                <tr>
-                  <td>2025-07-24</td>
-                  <td>Taxi aeropuerto</td>
-                  <td class="text-danger">-€22.00</td>
-                </tr>
-                <tr>
-                  <td>2025-07-23</td>
-                  <td>Cine</td>
-                  <td class="text-danger">-€12.00</td>
-                </tr>
-              </tbody>
+            <tbody>
+              <tr *ngFor="let c of cuenta">
+                <td>{{ c.fecha | date:'yyyy-MM-dd' }}</td>
+                <td>{{ c.descripcion }}</td>
+                <td>{{ c.transaccion }}</td>
+              </tr>
+            </tbody>
             </table>
           </div>
         </div>
