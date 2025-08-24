@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Cuenta } from './entidad/cuenta.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Usuario } from 'src/Cliente/entidad/cliente.entity';
 
 @Injectable()
 export class TiendaService {
@@ -10,6 +11,7 @@ export class TiendaService {
     constructor(
         @InjectRepository(Cuenta)
         private cuentaRepository: Repository<Cuenta>,
+      
       ) {}
 
     async obtenerCuenta(id: string): Promise<Cuenta[]> {
@@ -79,9 +81,10 @@ const ultimaCuenta = cuentas[cuentas.length - 1];
             cuenta: nuevaCuenta
         };
 
-        }
+        }        
         
-
     }   
+
+    
 
 }

@@ -26,4 +26,11 @@ export class RestClienteService {
     return this.http.post('http://localhost:3000/Cliente/AnadirIban',datos);
   }
 
+  VerificarCuentaReceptora(email: string): Observable<any> {
+  return this.http.get('http://localhost:3000/Cliente/VerificarCuenta', {
+    params: { email: email },
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  });
+}
+
 }

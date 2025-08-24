@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { ClienteService } from './cliente.service';
 import CreateUserDto from './dto/create-user.dto';
 import LoginUserDto from './dto/login-user.dto';
@@ -23,6 +23,12 @@ export class ClienteController {
   añadirIban(@Body() body: any) {
     
     return this.appService.añadirIban(body.usuarioId, body.iban);   
+  }
+
+   @Get('/VerificarCuenta')
+  verificarCuenta(@Query('email') email: string) {
+    console.log('Verificando cuenta para email de usuario:', email);
+    return this.appService.verificarCuenta(email);
   }
 
 }

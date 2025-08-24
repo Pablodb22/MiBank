@@ -15,6 +15,7 @@ export class TiendaController {
   realizarTransaccion(@Body() body: any) {
     console.log('Realizando transacción...');
     return this.appService.realizarTransaccion(body);
-
   }
+
+ 
 }

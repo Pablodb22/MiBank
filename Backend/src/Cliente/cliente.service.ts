@@ -57,5 +57,19 @@ public async añadirIban(usuarioId: number, iban: string): Promise<void> {
   await this.usuariosRepository.save(usuario);
   }
 
+  async verificarCuenta(email: string){
+        const usuario = await this.usuariosRepository.findOne({
+            where: { email: email },
+        });
+
+        if (usuario) {
+            console.log('usuario encontrado para email:', email);
+            return usuario;
+        } else {
+            console.log('No se encontró usuario para email:', email);
+            return false;
+        }
+
+    }
   
 }
