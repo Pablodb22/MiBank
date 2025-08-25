@@ -1,42 +1,54 @@
-<header class="d-flex align-items-center justify-content-between border-bottom px-4 py-3">
-  <div class="d-flex align-items-center gap-2 text-dark">
-    <div style="width: 1rem; height: 1rem;">
-      <!-- SVG icon -->
-      <!-- Puedes conservar el SVG tal como está -->
-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- ...contenido del SVG... -->
-      </svg>
-    </div>
-    <h2 class="h5 fw-bold m-0">Financio</h2>
-  </div>
+<header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-3">
+  <div class="container-fluid">
+    <!-- Logo + Nombre -->
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-dark" href="/">
+      <div class="d-flex align-items-center justify-content-center" style="width: 1.5rem; height: 1.5rem;">
+        <!-- SVG logo -->
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-100 h-100">
+          <!-- ...contenido del SVG... -->
+        </svg>
+      </div>
+      Financio
+    </a>
 
-  <div class="d-flex flex-grow-1 justify-content-end gap-4">
-    <div class="d-flex align-items-center gap-4">
-      <a class="text-dark text-decoration-none fw-medium small" href="/">Inicio</a>
-      <a class="text-dark text-decoration-none fw-medium small" href="/cuenta">Cuenta</a>
-      <a class="text-dark text-decoration-none fw-medium small" href="/bizum">Bizum</a>     
-    </div>
-    
-<button
-  class="d-flex align-items-center justify-content-center rounded-pill bg-primary text-white border-0 px-3 py-2"
-  style="height: 40px;"
-  [routerLink]="['/login']"
->
-  Login
-</button>
+    <!-- Botón hamburguesa en móvil -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div          
-      class="rounded-circle"
-      *ngIf="usuario"
-      style="
-        width: 40px;
-        height: 40px;
-        background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvPjQWpMfAHlI5TxKyigq4LfAdsORIJXHegUf04S9WuYbgArsQ3_n6mW9xg2cfpWBssW1_nmyLJrrbXWtkgygnSHEI8Z2eEWrkY5tmbyJnuaDAgVfkP0uVxGn0oCQTQ8lE29sLTdUlJJkYuszwIbJPU2ZN3EsnBZYn7tEkZAeltw5YOu8MvvCG0gkLi38-9fOuL5KLoziR2nKqn7w3BzYuMuoL7O_kWlrTfuQ1uYrNZLFuntt4BkiX7DGCnnrSQmNhb4XQqvouCdw');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      "
-       (click)="irConfiguracion()"
-    ></div>
+    <!-- Menú -->
+    <div class="collapse navbar-collapse justify-content-end gap-3" id="mainNavbar">
+      <ul class="navbar-nav gap-3">
+        <li class="nav-item">
+          <a class="nav-link fw-medium text-dark" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-medium text-dark" href="/cuenta">Cuenta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-medium text-dark" href="/bizum">Bizum</a>
+        </li>
+      </ul>
+
+      <!-- Botón Login -->
+      <a class="btn btn-primary rounded-pill fw-bold px-3 py-2 shadow-sm" [routerLink]="['/login']"  *ngIf="!usuario">
+        <i class="bi bi-box-arrow-in-right me-1"></i> Login
+      </a>
+
+      <!-- Avatar Usuario -->
+      <div
+        class="rounded-circle border border-light shadow-sm ms-2 d-none d-lg-block"
+        *ngIf="usuario"
+        role="button"
+        (click)="irConfiguracion()"
+        style="
+          width: 40px;
+          height: 40px;
+          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvPjQWpMfAHlI5TxKyigq4LfAdsORIJXHegUf04S9WuYbgArsQ3_n6mW9xg2cfpWBssW1_nmyLJrrbXWtkgygnSHEI8Z2eEWrkY5tmbyJnuaDAgVfkP0uVxGn0oCQTQ8lE29sLTdUlJJkYuszwIbJPU2ZN3EsnBZYn7tEkZAeltw5YOu8MvvCG0gkLi38-9fOuL5KLoziR2nKqn7w3BzYuMuoL7O_kWlrTfuQ1uYrNZLFuntt4BkiX7DGCnnrSQmNhb4XQqvouCdw');
+          background-size: cover;
+          background-position: center;
+        "
+      ></div>
+    </div>
   </div>
 </header>

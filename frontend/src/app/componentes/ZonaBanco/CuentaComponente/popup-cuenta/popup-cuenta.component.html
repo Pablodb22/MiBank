@@ -1,44 +1,49 @@
 <div 
   class="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
-  style="background: rgba(0,0,0,0.5); z-index: 1050;"
+  style="background: rgba(0,0,0,0.6); z-index: 1050;"
 >
-  <div 
-    class="bg-white rounded shadow p-4" 
-    style="max-width: 500px; width: 100%;"
-  >
+  <div class="bg-white rounded-4 shadow-lg p-4 w-100" style="max-width: 500px;">
+    
     <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h5 class="mb-0">
+    <div class="text-center mb-4">
+      <div class="bg-primary bg-gradient rounded-circle d-inline-flex align-items-center justify-content-center p-3 shadow-sm mb-3">
+        <i class="bi" 
+           [ngClass]="tipo === 'gasto' ? 'bi-dash-circle text-white' : 'bi-plus-circle text-white'" 
+           style="font-size:2rem;">
+        </i>
+      </div>
+      <h4 class="fw-bold mb-1">
         Añadir {{ tipo === 'gasto' ? 'Gasto' : 'Ingreso' }}
-      </h5>
-      <button 
-        type="button" 
-        class="btn-close" 
-        aria-label="Cerrar" 
-        (click)="cerrarPopup()"
-      ></button>
+      </h4>
+      <p class="text-muted small mb-0">
+        Completa los detalles para registrar tu {{ tipo === 'gasto' ? 'gasto' : 'ingreso' }}
+      </p>
     </div>
 
     <!-- Body -->
-    <form>
+    <form class="mb-4">
       <div class="mb-3">
-        <label for="fecha" class="form-label">Fecha</label>
+        <label for="fecha" class="form-label fw-semibold">Fecha</label>
         <input type="date" class="form-control" id="fecha" name="fecha" [(ngModel)]="transac.fecha" required>
       </div>
       <div class="mb-3">
-        <label for="descripcion" class="form-label">Descripción</label>
+        <label for="descripcion" class="form-label fw-semibold">Descripción</label>
         <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ej: Compra supermercado" [(ngModel)]="transac.descripcion" required>
       </div>
       <div class="mb-3">
-        <label for="importe" class="form-label">Importe</label>
+        <label for="importe" class="form-label fw-semibold">Importe (€)</label>
         <input type="number" class="form-control" id="importe" name="cantidad" placeholder="Ej: 50.00" [(ngModel)]="transac.cantidad" required>
       </div>
     </form>
 
     <!-- Footer -->
-    <div class="d-flex justify-content-end gap-2 mt-3">
-      <button type="button" class="btn btn-secondary" (click)="cerrarPopup()">Cancelar</button>
-      <button type="button" class="btn btn-primary" (click)="anadirTransaccion()">Guardar</button>
+    <div class="d-flex justify-content-end gap-2">
+      <button type="button" class="btn btn-outline-secondary rounded-pill px-4" (click)="cerrarPopup()">
+        Cancelar
+      </button>
+      <button type="button" class="btn btn-primary rounded-pill px-4" (click)="anadirTransaccion()">
+        Guardar
+      </button>
     </div>
   </div>
 </div>

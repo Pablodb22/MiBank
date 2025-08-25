@@ -1,84 +1,429 @@
 <app-header></app-header>
-<body>
-  <div class="container py-5">
-    <div class="mx-auto" style="max-width: 960px;">
-      <!-- Título principal -->
-      <h2 class="fw-bold fs-3 text-dark px-3 pb-3 pt-4">
-        ¡Bienvenido a Financio!
-      </h2>
-      <p class="text-dark px-3 pb-3 pt-1">
-        Descubre todo lo que puedes hacer con Financio para gestionar tus
-        finanzas de forma inteligente y sencilla.
-      </p>
-      
-
-      <!-- Cards de funcionalidades -->
-      <div class="row g-4 px-3">
-        <!-- Funcionalidad 1 -->
-        <div class="col-12 d-flex flex-column flex-md-row align-items-stretch gap-3 bg-white rounded-3 shadow-sm p-3">
-          <div class="flex-grow-1">
-            <p class="fw-bold text-dark mb-1">Gestión de Gastos Mensuales</p>
-            <p class="text-muted small">
-              Controla tus gastos mensuales con gráficos detallados y categorías personalizables.
-            </p>
-          </div>
-          <div class="flex-shrink-0" style="min-width: 280px;">
-            <div class="ratio ratio-16x9 rounded-3 overflow-hidden" style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9KvR8F5ob3w94PJWQNrevimwrlpvIcUb9f7jjKhT7iorwq52RiFzVZbeGNtkVptLPkDa1XaEtVBnrFI1mRn4YZtRkATeQoGHPbICealdkfhNyEXoOXugHLTzDjSa5uslc2eK4brfBlNzCffvgQrlVcZtlSZPvavqnaW-odu5ic1D96Lwlym0ydYHgUfRG0PX7OLo49DTVOq0ZTPKnsmAL8HLPMBaThf0sqMbChdwT0zLdMG-yRVAUbLrYjzWpFzeYE5N9ke4JGpE');
-              background-size: cover; background-position: center;">
+<main>
+    <!-- Hero Section -->
+    <section class="bg-primary bg-gradient py-5">
+        <div class="container py-5">
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-6">
+                    <div class="text-center text-lg-start">
+                        <div class="badge bg-light text-primary mb-3 px-3 py-2 rounded-pill fs-6">
+                            <i class="bi bi-star-fill me-1"></i>
+                            App Financiera #1 en España
+                        </div>
+                        <h1 class="display-3 fw-bold text-white mb-4">
+                            ¡Bienvenido a <span class="text-warning">Financio</span>!
+                        </h1>
+                        <p class="lead text-light mb-5 fs-5">
+                            Descubre todo lo que puedes hacer con Financio para gestionar tus
+                            finanzas de forma inteligente y sencilla.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                            <a [routerLink]="['/registro']" class="btn btn-warning btn-lg px-4 py-3 fw-bold rounded-pill shadow">
+                                <i class="bi bi-rocket-takeoff me-2"></i>
+                                Comenzar ahora
+                            </a>
+                            <a href="#features" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold rounded-pill">
+                                <i class="bi bi-play-circle me-2"></i>
+                                Ver funciones
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center mt-5 mt-lg-0">
+                        <div class="bg-white rounded-5 shadow-lg p-5 d-inline-block position-relative">
+                            <div class="bg-primary bg-gradient rounded-circle p-4 d-inline-block mb-3">
+                                <i class="bi bi-wallet2 text-white" style="font-size: 4rem;"></i>
+                            </div>
+                            <div class="position-absolute top-0 start-100 translate-middle">
+                                <span class="badge bg-success rounded-pill px-3 py-2">
+                                    <i class="bi bi-check-lg"></i> Seguro
+                                </span>
+                            </div>
+                            <div class="mt-3">
+                                <h4 class="fw-bold text-dark">Control Total</h4>
+                                <p class="text-muted mb-0 fs-6">De tus finanzas personales</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <!-- Funcionalidad 2 -->
-        <div class="col-12 d-flex flex-column flex-md-row align-items-stretch gap-3 bg-white rounded-3 shadow-sm p-3">
-          <div class="flex-grow-1">
-            <p class="fw-bold text-dark mb-1">Transferencias entre Amigos (Bizums)</p>
-            <p class="text-muted small">
-              Envía y recibe dinero al instante con tus amigos y familiares.
-            </p>
-          </div>
-          <div class="flex-shrink-0" style="min-width: 280px;">
-            <div class="ratio ratio-16x9 rounded-3 overflow-hidden" style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCuQFgi2CoS3UC1vnwI8LH_4xsxkzARw8mGh8Hol_DgYaEIjr2SW292v8khI9mEhfrZRdvVCNVS6FEOWi-qlVtV5wFXxCG1BsLHRYRtnuOYdSl4Ri8P20yF3Dc6HcKj5TluX5L-Ak17qElZbJPnLTusNbzHvEu0o3-geiURQAH30T7Jijv0GeKUgvBDQ5-nh4DHtAqlgG9V7Qu-969mTZnn2QX_4ohDXawyr6_5gyLqY7W_iFYsQ2PLJyarkBly9EJcrAz8eMEtt7Y');
-              background-size: cover; background-position: center;">
+    <!-- Stats Section -->
+    <section class="py-4 bg-dark">
+        <div class="container">
+            <div class="row text-center text-white">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people-fill text-warning me-2 fs-4"></i>
+                        <div>
+                            <h5 class="mb-0 fw-bold">50,000+</h5>
+                            <small class="text-light">Usuarios activos</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <i class="bi bi-currency-euro text-success me-2 fs-4"></i>
+                        <div>
+                            <h5 class="mb-0 fw-bold">€2M+</h5>
+                            <small class="text-light">Gestionados</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <i class="bi bi-star-fill text-warning me-2 fs-4"></i>
+                        <div>
+                            <h5 class="mb-0 fw-bold">4.9/5</h5>
+                            <small class="text-light">Valoración</small>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <!-- Funcionalidad 3 -->
-        <div class="col-12 d-flex flex-column flex-md-row align-items-stretch gap-3 bg-white rounded-3 shadow-sm p-3">
-          <div class="flex-grow-1">
-            <p class="fw-bold text-dark mb-1">Gestión de Gastos Grupales</p>
-            <p class="text-muted small">
-              Organiza y divide gastos con amigos en viajes, cenas y más.
-            </p>
-          </div>
-          <div class="flex-shrink-0" style="min-width: 280px;">
-            <div class="ratio ratio-16x9 rounded-3 overflow-hidden" style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAbadIBNdeZjEMeElIhfIZwTlJu0Q8SsnkzKmn6SABNBVUiPsta18xIzhNO1-_13CNmlaO9mQdfczqhZBGwfoU05LxSkiNwnPTA909x6iA0qSB4gS_WQ2jCs6uParAJgLUhq1nobNUHUo0dvlOZlyDv-a_H-ahS_m9B0YTWOwajogHRo1ExdRVhJNiiky8NIkfHXNjrwyA_pYqYBRIC82XURb4UnTVxvPmE3hlexi3B8X4Rh7ZxEOF3KTkPTHCcXkTC1MyJxC-Aeqw');
-              background-size: cover; background-position: center;">
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="badge bg-primary text-white px-3 py-2 rounded-pill mb-3">
+                    <i class="bi bi-lightning-fill me-1"></i>
+                    Funcionalidades
+                </span>
+                <h2 class="display-5 fw-bold text-dark mb-3">Todo en un solo lugar</h2>
+                <p class="lead text-muted col-lg-8 mx-auto">
+                    Descubre las herramientas que necesitas para tomar el control total de tus finanzas personales
+                </p>
             </div>
-          </div>
-        </div>
 
-        <!-- Funcionalidad 4 -->
-        <div class="col-12 d-flex flex-column flex-md-row align-items-stretch gap-3 bg-white rounded-3 shadow-sm p-3">
-          <div class="flex-grow-1">
-            <p class="fw-bold text-dark mb-1">Seguimiento de Criptomonedas</p>
-            <p class="text-muted small">
-              Monitoriza tus inversiones en criptomonedas y mantente al día con las tendencias del mercado.
-            </p>
-          </div>
-          <div class="flex-shrink-0" style="min-width: 280px;">
-            <div class="ratio ratio-16x9 rounded-3 overflow-hidden" style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1947BhjkL7ziMqdXCkHHYkival7c_7wDXgzvKik1XgZA9yGY3caZw9QQhw6KzykG4Zi4z6sNPKljQsIFFGxXUr9K3jcGH4-EgYdHJkPsMkvOTj_piHh2C3EYuwaLlYyZuqcyl0JCZ4ICwmyZ4LU6EGRyY2OVN77JJm_xbhZS6eznVJn2aHipbl615D7nTkyOgTMlWCGCzyqIBQhZ7XpCqlbRuLdnpBrrDfNVMe1kLYx6KW_DcLYhROYbBLVG3rSEE1qCGum4Qn5k');
-              background-size: cover; background-position: center;">
+            <div class="row g-4">
+                <!-- Feature 1: Gestión de Gastos -->
+                <div class="col-12 col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-8">
+                                <div class="card-body p-4 h-100 d-flex flex-column">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-primary bg-gradient rounded-circle p-3 me-3">
+                                            <i class="bi bi-bar-chart text-white fs-5"></i>
+                                        </div>
+                                        <h5 class="card-title fw-bold mb-0">Gestión de Gastos</h5>
+                                    </div>
+                                    <p class="card-text text-muted mb-4 flex-grow-1">
+                                        Controla tus gastos mensuales con gráficos detallados y categorías personalizables.
+                                    </p>
+                                    <div class="mt-auto">
+                                        <a [routerLink]="['/cuenta']" class="btn btn-outline-primary rounded-pill px-4">
+                                            Explorar <i class="bi bi-arrow-right ms-1"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="h-100 bg-primary bg-gradient rounded-end d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-graph-up text-white opacity-75" style="font-size: 4rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Bizum -->
+                <div class="col-12 col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-8">
+                                <div class="card-body p-4 h-100 d-flex flex-column">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-success bg-gradient rounded-circle p-3 me-3">
+                                            <i class="bi bi-send text-white fs-5"></i>
+                                        </div>
+                                        <h5 class="card-title fw-bold mb-0">Transferencias Bizum</h5>
+                                    </div>
+                                    <p class="card-text text-muted mb-4 flex-grow-1">
+                                        Envía y recibe dinero al instante con tus amigos y familiares de forma segura.
+                                    </p>
+                                    <div class="mt-auto">
+                                        <a [routerLink]="['/bizum']" class="btn btn-outline-success rounded-pill px-4">
+                                            Probar Bizum <i class="bi bi-arrow-right ms-1"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="h-100 bg-success bg-gradient rounded-end d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-phone text-white opacity-75" style="font-size: 4rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Gastos Grupales -->
+                <div class="col-12 col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-8">
+                                <div class="card-body p-4 h-100 d-flex flex-column">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-warning bg-gradient rounded-circle p-3 me-3">
+                                            <i class="bi bi-people text-white fs-5"></i>
+                                        </div>
+                                        <h5 class="card-title fw-bold mb-0">Gastos Grupales</h5>
+                                    </div>
+                                    <p class="card-text text-muted mb-4 flex-grow-1">
+                                        Organiza y divide gastos con amigos en viajes, cenas y eventos especiales.
+                                    </p>
+                                    <div class="mt-auto">
+                                        <a href="#" class="btn btn-outline-warning rounded-pill px-4">
+                                            Crear grupo <i class="bi bi-arrow-right ms-1"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="h-100 bg-warning bg-gradient rounded-end d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-person-hearts text-white opacity-75" style="font-size: 4rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 4: Criptomonedas -->
+                <div class="col-12 col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-8">
+                                <div class="card-body p-4 h-100 d-flex flex-column">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="bg-danger bg-gradient rounded-circle p-3 me-3">
+                                            <i class="bi bi-currency-bitcoin text-white fs-5"></i>
+                                        </div>
+                                        <h5 class="card-title fw-bold mb-0">Seguimiento Cripto</h5>
+                                    </div>
+                                    <p class="card-text text-muted mb-4 flex-grow-1">
+                                        Monitoriza tus inversiones en criptomonedas y sigue las tendencias del mercado.
+                                    </p>
+                                    <div class="mt-auto">
+                                        <a href="#" class="btn btn-outline-danger rounded-pill px-4">
+                                            Ver mercados <i class="bi bi-arrow-right ms-1"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="h-100 bg-danger bg-gradient rounded-end d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-graph-up-arrow text-white opacity-75" style="font-size: 4rem;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</body>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="badge bg-success text-white px-3 py-2 rounded-pill mb-3">
+                    <i class="bi bi-award-fill me-1"></i>
+                    Ventajas
+                </span>
+                <h2 class="display-5 fw-bold text-dark mb-3">¿Por qué elegir Financio?</h2>
+                <p class="lead text-muted col-lg-8 mx-auto">
+                    Miles de usuarios ya confían en nosotros para gestionar sus finanzas
+                </p>
+            </div>
+            <div class="row g-5">
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="bg-primary bg-gradient rounded-circle p-4 d-inline-block mb-4 shadow">
+                            <i class="bi bi-shield-fill-check text-white" style="font-size: 3rem;"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-3">Máxima Seguridad</h4>
+                        <p class="text-muted lead">
+                            Tus datos están protegidos con encriptación de nivel bancario y autenticación de dos factores.
+                        </p>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <div class="border-end">
+                                    <i class="bi bi-lock-fill text-primary fs-4"></i>
+                                    <div class="small text-muted mt-1">SSL 256-bit</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <i class="bi bi-key-fill text-primary fs-4"></i>
+                                <div class="small text-muted mt-1">2FA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="bg-success bg-gradient rounded-circle p-4 d-inline-block mb-4 shadow">
+                            <i class="bi bi-lightning-charge-fill text-white" style="font-size: 3rem;"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-3">Rapidez Instantánea</h4>
+                        <p class="text-muted lead">
+                            Transferencias y operaciones procesadas al instante las 24 horas del día, todos los días.
+                        </p>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <div class="border-end">
+                                    <i class="bi bi-stopwatch-fill text-success fs-4"></i>
+                                    <div class="small text-muted mt-1">&lt; 1 seg</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <i class="bi bi-clock-fill text-success fs-4"></i>
+                                <div class="small text-muted mt-1">24/7</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="bg-warning bg-gradient rounded-circle p-4 d-inline-block mb-4 shadow">
+                            <i class="bi bi-emoji-smile-fill text-white" style="font-size: 3rem;"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-3">Fácil de Usar</h4>
+                        <p class="text-muted lead">
+                            Interface intuitiva diseñada para todos los usuarios, sin importar su experiencia tecnológica.
+                        </p>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <div class="border-end">
+                                    <i class="bi bi-phone-fill text-warning fs-4"></i>
+                                    <div class="small text-muted mt-1">Mobile First</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <i class="bi bi-universal-access text-warning fs-4"></i>
+                                <div class="small text-muted mt-1">Accesible</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-6 fw-bold text-dark mb-3">Lo que dicen nuestros usuarios</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </div>
+                            <p class="text-muted mb-4">
+                                "Financio ha cambiado completamente cómo gestiono mi dinero. Ahora tengo todo bajo control."
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary rounded-circle p-2 me-3">
+                                    <i class="bi bi-person-fill text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">María García</h6>
+                                    <small class="text-muted">Madrid</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </div>
+                            <p class="text-muted mb-4">
+                                "La función de gastos grupales es perfecta para cuando salgo con amigos. Super fácil de usar."
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-success rounded-circle p-2 me-3">
+                                    <i class="bi bi-person-fill text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Carlos Ruiz</h6>
+                                    <small class="text-muted">Barcelona</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-3">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </div>
+                            <p class="text-muted mb-4">
+                                "Excelente app. El seguimiento de criptomonedas me ha ayudado mucho con mis inversiones."
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-warning rounded-circle p-2 me-3">
+                                    <i class="bi bi-person-fill text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Ana López</h6>
+                                    <small class="text-muted">Valencia</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container py-5 text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <i class="bi bi-rocket-takeoff text-warning mb-4" style="font-size: 4rem;"></i>
+                    <h2 class="display-4 fw-bold mb-4">¿Listo para el despegue?</h2>
+                    <p class="lead mb-5 text-light">
+                        Únete a más de <strong class="text-warning">50,000 usuarios</strong> que ya han tomado el control de sus finanzas con Financio
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <a class="btn btn-warning btn-lg px-5 py-3 fw-bold rounded-pill shadow" [routerLink]="['/registro']">
+                            <i class="bi bi-person-plus me-2"></i>
+                            Crear cuenta gratuita
+                        </a>
+                        <a href="#features" class="btn btn-outline-light btn-lg px-5 py-3 fw-bold rounded-pill">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Más información
+                        </a>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 <app-footer></app-footer>

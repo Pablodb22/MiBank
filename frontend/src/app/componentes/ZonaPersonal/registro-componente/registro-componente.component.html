@@ -1,85 +1,80 @@
-<div class="d-flex justify-content-center py-5 px-4">
-  <div class="w-100" style="max-width: 512px;">
-    <!-- Título -->
-    <h2 class="text-dark text-center fw-bold fs-3 pb-3 pt-4">
-      Crea una cuenta
-    </h2>
+<body class="bg-gradient">
+    <div class="min-vh-100 d-flex align-items-center justify-content-center p-4">
+        <div class="card shadow-lg border-0 rounded-4" style="max-width: 450px; width: 100%;">
+            <div class="card-body p-5">
+                <!-- Header -->
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold text-dark mb-3">Crea una cuenta</h2>
+                    <p class="text-muted">Únete a Financio y gestiona tus finanzas</p>
+                </div>
 
-    <!-- Campo: Nombre -->
-    <div class="d-flex flex-wrap align-items-end gap-3 px-2 py-3" style="max-width: 480px;">
-      <div class="flex-grow-1">
-        <label class="form-label text-dark fw-medium pb-2">Nombre</label>
-        <input
-          type="text"
-          placeholder="Nombre"
-          class="form-control rounded-4 border-0"
-          style="background-color: #f0f2f4; color: #111418; height: 56px;"
-          [(ngModel)]="nombre"
-        />
-        <div *ngIf="errores.nombre" class="text-danger small pt-1">{{ errores.nombre }}</div>
-      </div>
+                <!-- Form -->
+                <form id="registerForm">
+                    <!-- Nombre -->
+                    <div class="mb-4">
+                        <label for="nombre" class="form-label fw-medium text-dark">Nombre</label>
+                        <input 
+                            type="text" 
+                            class="form-control form-control-custom" 
+                            id="nombre" 
+                            name="nombre"
+                            placeholder="Nombre" 
+                            required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- Apellido -->
+                    <div class="mb-4">
+                        <label for="apellido" class="form-label fw-medium text-dark">Apellido</label>
+                        <input 
+                            type="text" 
+                            class="form-control form-control-custom" 
+                            id="apellido" 
+                            name="apellido"
+                            placeholder="Apellido" 
+                            required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-4">
+                        <label for="email" class="form-label fw-medium text-dark">Correo electrónico</label>
+                        <input 
+                            type="email" 
+                            class="form-control form-control-custom" 
+                            id="email" 
+                            name="email"
+                            placeholder="Correo electrónico" 
+                            required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="mb-4">
+                        <label for="password" class="form-label fw-medium text-dark">Contraseña</label>
+                        <input 
+                            type="password" 
+                            class="form-control form-control-custom" 
+                            id="password" 
+                            name="password"
+                            placeholder="**********" 
+                            required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary-custom w-100 py-3 fw-semibold mb-4">
+                        Registrarse
+                    </button>
+
+                    <!-- Login Link -->
+                    <p class="text-center text-muted">
+                        ¿Ya tienes una cuenta? 
+                        <a  class="text-primary fw-medium text-decoration-none" [routerLink]="['/login']">
+                            Inicia sesión
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <!-- Campo: Apellido -->
-    <div class="d-flex flex-wrap align-items-end gap-3 px-2 py-3" style="max-width: 480px;">
-      <div class="flex-grow-1">
-        <label class="form-label text-dark fw-medium pb-2">Apellido</label>
-        <input
-          type="text"
-          placeholder="Apellido"
-          class="form-control rounded-4 border-0"
-          style="background-color: #f0f2f4; color: #111418; height: 56px;"
-          [(ngModel)]="apellido"
-        />
-        <div *ngIf="errores.apellido" class="text-danger small pt-1">{{ errores.apellido }}</div>
-      </div>
-    </div>
-
-    <!-- Campo: Correo -->
-    <div class="d-flex flex-wrap align-items-end gap-3 px-2 py-3" style="max-width: 480px;">
-      <div class="flex-grow-1">
-        <label class="form-label text-dark fw-medium pb-2">Correo electrónico</label>
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          class="form-control rounded-4 border-0"
-          style="background-color: #f0f2f4; color: #111418; height: 56px;"
-          [(ngModel)]="email"
-        />
-        <div *ngIf="errores.email" class="text-danger small pt-1">{{ errores.email }}</div>
-      </div>
-    </div>
-
-    <!-- Campo: Contraseña -->
-    <div class="d-flex flex-wrap align-items-end gap-3 px-2 py-3" style="max-width: 480px;">
-      <div class="flex-grow-1">
-        <label class="form-label text-dark fw-medium pb-2">Contraseña</label>
-        <input
-          type="password"
-          placeholder="**********"
-          class="form-control rounded-4 border-0"
-          style="background-color: #f0f2f4; color: #111418; height: 56px;"
-          [(ngModel)]="contrase"
-        />
-        <div *ngIf="errores.contrase" class="text-danger small pt-1">{{ errores.contrase }}</div>
-      </div>
-    </div>
-
-    <!-- Botón: Registro -->
-    <div class="d-flex px-2 py-3" style="max-width: 480px;">
-      <button
-        type="submit"
-        class="btn w-100 text-white fw-bold"
-        style="background-color: #1978e5; border-radius: 9999px;"
-        (click)="enviarRegistro()"
-      >
-        Registrarse
-      </button>
-    </div>
-
-    <!-- Link: ¿Ya tienes cuenta? -->
-    <p class="text-center text-decoration-underline text-muted small px-2 pt-1 pb-3" [routerLink]="['/login']">
-      ¿Ya tienes una cuenta?
-    </p>
-  </div>
-</div>
