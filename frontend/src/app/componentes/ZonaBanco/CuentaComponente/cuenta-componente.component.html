@@ -51,38 +51,43 @@
       </div>
     </section>
 
-    <!-- Tabla de Gastos -->
+    <!-- Tabla agrupada por meses -->
     <section class="py-5">
       <div class="container">
-        <div class="card border-0 shadow-sm">
-          <div class="card-header bg-primary bg-gradient text-white fw-bold">
-            <i class="bi bi-list-ul me-2"></i> Listado de Gastos
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-hover align-middle">
-                <thead class="table-light">
-                  <tr>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Cantidad</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let c of cuenta">
-                    <td>{{ c.fecha | date:'yyyy-MM-dd' }}</td>
-                    <td>{{ c.descripcion }}</td>
-                    <td>
-                      <span [ngClass]="{'text-danger': c.transaccion < 0, 'text-success': c.transaccion > 0}">
-                        {{ c.transaccion }} €
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <div *ngFor="let mes of (agrupadoPorMes | keyvalue: sortByKey)">
+  <div class="card my-3 shadow-sm">
+    <div class="card-header bg-secondary text-white fw-bold">
+      {{ formatearMes($any(mes).key) }}
+      <span class="float-end">
+        Ingresos: <span class="text-success">{{ $any(mes).value.ingresos }} €</span> |
+        Gastos: <span class="text-danger">{{ $any(mes).value.gastos }} €</span>
+      </span>
+    </div>
+    <div class="card-body p-0">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of $any(mes).value.movimientos">
+            <td>{{ c.fecha | date:'yyyy-MM-dd' }}</td>
+            <td>{{ c.descripcion }}</td>
+            <td>
+              <span [ngClass]="{'text-danger': c.transaccion < 0, 'text-success': c.transaccion > 0}">
+                {{ c.transaccion }} €
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
   </main>

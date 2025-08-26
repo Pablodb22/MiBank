@@ -37,8 +37,10 @@ export class LoginComponenteComponent {
 
   login() {
     if (!this.validarCampos()) {
+      console.log("mal")
       return;
     }
+    console.log('Intentando login con', this.email, this.contrase);
 
     const datosLogin = {
       email: this.email,

@@ -19,6 +19,7 @@
                             id="nombre" 
                             name="nombre"
                             placeholder="Nombre" 
+                            [(ngModel)]="nombre"
                             required>
                         <div class="invalid-feedback"></div>
                     </div>
@@ -32,6 +33,7 @@
                             id="apellido" 
                             name="apellido"
                             placeholder="Apellido" 
+                            [(ngModel)]="apellido"
                             required>
                         <div class="invalid-feedback"></div>
                     </div>
@@ -45,6 +47,7 @@
                             id="email" 
                             name="email"
                             placeholder="Correo electrónico" 
+                            [(ngModel)]="email"
                             required>
                         <div class="invalid-feedback"></div>
                     </div>
@@ -58,12 +61,13 @@
                             id="password" 
                             name="password"
                             placeholder="**********" 
+                            [(ngModel)]="contrase"
                             required>
                         <div class="invalid-feedback"></div>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary-custom w-100 py-3 fw-semibold mb-4">
+                    <button type="submit" class="btn btn-primary-custom w-100 py-3 fw-semibold mb-4" (click)="enviarRegistro()">
                         Registrarse
                     </button>
 
