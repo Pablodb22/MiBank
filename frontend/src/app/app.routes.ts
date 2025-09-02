@@ -5,6 +5,7 @@ import { RegistroComponenteComponent } from './componentes/ZonaPersonal/registro
 import { ConfiguracionUsuarioComponent } from './componentes/ZonaPersonal/configuracion-usuario-component/configuracion-usuario-component.component';
 import { CuentaComponenteComponent } from './componentes/ZonaBanco/CuentaComponente/cuenta-componente.component';
 import { BizumComponenteComponent } from './componentes/ZonaBanco/BizumComponente/bizum-componente.component';
+import { GrupoComponenteComponent } from './componentes/ZonaBanco/GrupoComponente/grupo-componente.component';
 
 
 export const routes: Routes = [
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'configuracion', component: ConfiguracionUsuarioComponent },
   {path:'cuenta',component:CuentaComponenteComponent},
   {path:'bizum',component:BizumComponenteComponent},
+  {path:'grupo',component:GrupoComponenteComponent}
  
   
 

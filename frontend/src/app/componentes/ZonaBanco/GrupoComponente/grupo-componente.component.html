@@ -1,0 +1,441 @@
+<div class="d-flex flex-column min-vh-100">
+  <app-header></app-header>
+  <div class="container py-4">
+    <div class="text-center mb-5">
+      <div
+        class="bg-success rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+        style="width: 80px; height: 80px"
+      >
+        <i class="bi bi-people-fill text-white fs-1"></i>
+      </div>
+      <h2 class="display-5 fw-bold mb-2">Gestión de Gastos Grupales</h2>
+      <p class="lead text-muted">Divide los gastos de manera inteligente</p>
+    </div>
+
+    
+    <div *ngIf="!eventoCreado" class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white text-center">
+            <h4><i class="bi bi-calendar-plus me-2"></i>Crear Nuevo Evento</h4>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="crearEvento()">
+              <div class="mb-3">
+                <label class="form-label">Nombre del Evento</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="nombreEvento"
+                  placeholder="Ej: Barbacoa del sábado"
+                  name="nombreEvento"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Descripción (opcional)</label>
+                <textarea
+                  class="form-control"
+                  [(ngModel)]="descripcionEvento"
+                  placeholder="Describe el evento..."
+                  name="descripcionEvento"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary w-100"
+                [disabled]="!nombreEvento.trim()"
+              >
+                <i class="bi bi-check me-2"></i>Crear Evento
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div *ngIf="eventoCreado">
+      
+      <div class="row mb-4">
+        <div class="col">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h3 class="fw-bold mb-0">{{ nombreEvento }}</h3>
+              <p class="text-muted mb-0" *ngIf="descripcionEvento">
+                {{ descripcionEvento }}
+              </p>
+            </div>
+            <button class="btn btn-outline-danger" (click)="reiniciarEvento()">
+              <i class="bi bi-arrow-clockwise me-2"></i>Nuevo Evento
+            </button>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card bg-primary text-white text-center">
+            <div class="card-body">
+              <h5 class="card-title">{{ participantes.length }}</h5>
+              <p class="card-text">Participantes</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-success text-white text-center">
+            <div class="card-body">
+              <h5 class="card-title">{{ gastos.length }}</h5>
+              <p class="card-text">Gastos</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-warning text-white text-center">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ getTotalGastos() | number : "1.2-2" }}€
+              </h5>
+              <p class="card-text">Total</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            [class.active]="vistaActual === 'participantes'"
+            (click)="vistaActual = 'participantes'"
+          >
+            <i class="bi bi-people me-2"></i>Participantes
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            [class.active]="vistaActual === 'gastos'"
+            (click)="vistaActual = 'gastos'"
+          >
+            <i class="bi bi-receipt me-2"></i>Gastos
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            [class.active]="vistaActual === 'balances'"
+            (click)="vistaActual = 'balances'; calcularBalances()"
+          >
+            <i class="bi bi-calculator me-2"></i>Balances
+          </button>
+        </li>
+      </ul>
+
+     
+      <div *ngIf="vistaActual === 'participantes'">
+        <div class="row">
+        
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0">Agregar Participante</h6>
+              </div>
+              <div class="card-body">
+                <form (ngSubmit)="agregarParticipante()">
+                  <div class="mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="nuevoParticipante"
+                      placeholder="Nombre del participante"
+                      name="nuevoParticipante"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary w-100"
+                    [disabled]="!nuevoParticipante.trim()"
+                  >
+                    <i class="bi bi-person-plus me-2"></i>Agregar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+       
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0">
+                  Lista de Participantes ({{ participantes.length }})
+                </h6>
+              </div>
+              <div class="card-body">
+                <div
+                  *ngIf="participantes.length === 0"
+                  class="text-muted text-center py-3"
+                >
+                  No hay participantes agregados
+                </div>
+                <div
+                  *ngFor="let participante of participantes"
+                  class="d-flex justify-content-between align-items-center bg-light p-3 rounded mb-2"
+                >
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person-circle text-primary me-2 fs-4"></i>
+                    <span class="fw-semibold">{{ participante.nombre }}</span>
+                  </div>
+                  <button
+                    class="btn btn-outline-danger btn-sm"
+                    (click)="eliminarParticipante(participante.id)"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div *ngIf="vistaActual === 'gastos'">
+        <div class="row">
+        
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0">Registrar Gasto</h6>
+              </div>
+              <div class="card-body">
+                <form (ngSubmit)="agregarGasto()">
+                  <div class="mb-3">
+                    <label class="form-label">Descripción</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="nuevoGasto.descripcion"
+                      placeholder="Ej: Cena restaurante"
+                      name="descripcion"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Cantidad (€)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      [(ngModel)]="nuevoGasto.cantidad"
+                      step="0.01"
+                      placeholder="0.00"
+                      name="cantidad"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Pagado por</label>
+                    <select
+                      class="form-select"
+                      [(ngModel)]="nuevoGasto.pagadoPor"
+                      name="pagadoPor"
+                      required
+                    >
+                      <option value="">Seleccionar...</option>
+                      <option
+                        *ngFor="let participante of participantes"
+                        [value]="participante.nombre"
+                      >
+                        {{ participante.nombre }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Dividir entre:</label>
+                    <div
+                      *ngFor="let participante of participantes"
+                      class="form-check"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        [checked]="isParticipanteSelected(participante.nombre)"
+                        (change)="
+                          onParticipanteChange(participante.nombre, $event)
+                        "
+                        [id]="'check_' + participante.id"
+                      />
+                      <label
+                        class="form-check-label"
+                        [for]="'check_' + participante.id"
+                      >
+                        {{ participante.nombre }}
+                      </label>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary w-100">
+                    <i class="bi bi-receipt-cutoff me-2"></i>Registrar Gasto
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+         
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0">Lista de Gastos ({{ gastos.length }})</h6>
+              </div>
+              <div class="card-body">
+                <div
+                  *ngIf="gastos.length === 0"
+                  class="text-muted text-center py-3"
+                >
+                  No hay gastos registrados
+                </div>
+                <div
+                  *ngFor="let gasto of gastos"
+                  class="bg-light p-3 rounded mb-3"
+                >
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div class="flex-grow-1">
+                      <h6 class="fw-bold mb-1">{{ gasto.descripcion }}</h6>
+                      <p class="mb-1">
+                        <strong>Pagado por:</strong> {{ gasto.pagadoPor }}
+                      </p>
+                      <p class="mb-1">
+                        <strong>Dividido entre:</strong>
+                        {{ gasto.participantes.join(", ") }}
+                      </p>
+                      <small class="text-muted"
+                        >Cada persona:
+                        {{
+                          getGastoPorPersona(gasto) | number : "1.2-2"
+                        }}€</small
+                      >
+                    </div>
+                    <div class="text-end">
+                      <h5 class="text-success mb-2">
+                        {{ gasto.cantidad | number : "1.2-2" }}€
+                      </h5>
+                      <button
+                        class="btn btn-outline-danger btn-sm"
+                        (click)="eliminarGasto(gasto.id)"
+                      >
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div *ngIf="vistaActual === 'balances'">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0">Balances por Persona</h6>
+              </div>
+              <div class="card-body">
+                <div
+                  *ngIf="balances.length === 0"
+                  class="text-muted text-center py-3"
+                >
+                  No hay balances que mostrar
+                </div>
+                <div
+                  *ngFor="let balance of balances"
+                  class="d-flex justify-content-between align-items-center p-3 rounded mb-2"
+                  [class.bg-success]="balance.balance > 0.01"
+                  [class.bg-opacity-10]="
+                    balance.balance > 0.01 || balance.balance < -0.01
+                  "
+                  [class.bg-danger]="balance.balance < -0.01"
+                  [class.bg-light]="Math.abs(balance.balance) <= 0.01"
+                >
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person-circle text-primary me-2 fs-4"></i>
+                    <span class="fw-semibold">{{ balance.nombre }}</span>
+                  </div>
+                  <div class="text-end">
+                    <div
+                      class="fw-bold"
+                      [class.text-success]="balance.balance > 0.01"
+                      [class.text-danger]="balance.balance < -0.01"
+                    >
+                      {{ balance.balance > 0 ? "+" : ""
+                      }}{{ balance.balance | number : "1.2-2" }}€
+                    </div>
+                    <small class="text-muted">
+                      <span *ngIf="Math.abs(balance.balance) <= 0.01"
+                        >En paz</span
+                      >
+                      <span *ngIf="balance.balance > 0.01">A recibir</span>
+                      <span *ngIf="balance.balance < -0.01">A pagar</span>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0">Resumen de Liquidación</h6>
+              </div>
+              <div class="card-body">
+                
+                <div
+                  *ngIf="balances.length === 0"
+                  class="text-muted text-center py-3"
+                >
+                  No hay liquidaciones que mostrar
+                </div>
+                <div *ngIf="balances.length > 0">
+                  <div *ngFor="let deudor of balances" class="mb-2">
+                    <div *ngIf="deudor.balance < -0.01">
+                      <div class="alert alert-warning py-2">
+                        <strong>{{ deudor.nombre }}</strong> debe
+                        <strong
+                          >{{
+                            Math.abs(deudor.balance) | number : "1.2-2"
+                          }}€</strong
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngFor="let acreedor of balances" class="mb-2">
+                    <div *ngIf="acreedor.balance > 0.01">
+                      <div class="alert alert-success py-2">
+                        <strong>{{ acreedor.nombre }}</strong> debe recibir
+                        <strong
+                          >{{ acreedor.balance | number : "1.2-2" }}€</strong
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer class="mt-auto"></app-footer>
+</div>
