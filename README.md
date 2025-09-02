@@ -24,12 +24,6 @@ Nuestro banco virtual está pensado para simplificar tu vida financiera con func
 - **Liquidación Simplificada**: Recibe un resumen claro de quién debe a quién, facilitando la liquidación de deudas de grupo sin complicaciones.
 - **Eventos Personalizables**: Crea eventos específicos para cada actividad grupal y añade participantes y gastos de manera flexible.
 
-### 📈 Monitorización de Criptomonedas (Histórico hasta 2 años)
-
-- **Gráficos en Tiempo Real**: Sigue el valor de tus criptomonedas favoritas con gráficos actualizados.
-- **Análisis Histórico**: Consulta la evolución del precio de las criptomonedas seleccionadas desde hace hasta dos años, ayudándote a tomar decisiones informadas sobre tus inversiones.
-- **Selección de Criptos**: Añade las criptomonedas que te interesan a tu lista de seguimiento personalizada.
-
 ---
 
 ## 🚀 Tecnologías Utilizadas
